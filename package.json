@@ -2,14 +2,17 @@
   "name": "blog_koa2_vue_react",
   "version": "1.0.0",
   "description": "blog,koa2,vue admin, react front",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "nodemon app.js"
   },
   "license": "MIT",
   "dependencies": {
+    "@koa/cors": "^3.0.0",
+    "http-proxy-middleware": "^1.0.1",
     "koa": "^2.11.0",
     "koa-bodyparser": "^4.2.1",
+    "koa-json": "^2.0.2",
     "koa-router": "^8.0.8",
     "koa-session": "^5.13.1",
     "koa-static": "^5.0.0",
