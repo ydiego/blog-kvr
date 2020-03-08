@@ -9,8 +9,10 @@
   "license": "MIT",
   "dependencies": {
     "@koa/cors": "^3.0.0",
+    "art-template": "^4.13.2",
     "http-proxy-middleware": "^1.0.1",
     "koa": "^2.11.0",
+    "koa-art-template": "^1.1.1",
     "koa-bodyparser": "^4.2.1",
     "koa-json": "^2.0.2",
     "koa-router": "^8.0.8",

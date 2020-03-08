@@ -4,6 +4,7 @@ const Koa = require("koa"),
   bodyParser = require("koa-bodyparser"),
   static = require("koa-static"),
   cors = require("@koa/cors"),
+  template = require('koa-art-template'),
   session = require("koa-session");
 
 const app = new Koa();
@@ -22,8 +23,15 @@ const SESSION_CONFIG = {
   renew: false /** (boolean) renew session when session is nearly expired, so we can always keep user logged in. (default is false)*/
 };
 
+template(app, {
+  'root': __dirname,
+  extname: '.html',
+  debug: process.env.NODE_ENV !== 'production'
+})
+
 app.use(session(SESSION_CONFIG, app));
 app.use(static(__dirname + "/public"));
+app.use(static(__dirname + "/admin/dist"));
 app.use(cors());
 app.use(bodyParser());
 
