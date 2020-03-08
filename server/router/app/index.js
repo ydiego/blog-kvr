@@ -1,15 +1,8 @@
-const router = require('koa-router')({
-  prefix: "/api"
-})
-const Article = require('../../controllers/article')
+const router = require('koa-router')()
 
-router.get('/article/list', Article.list)
-
-router.get('/article/detail', Article.detail)
-
-router.get('*', async ctx => {
-  ctx.body = '404'
-})
+// router.get('*', async ctx => {
+//   ctx.body = '404'
+// })
 
 
 module.exports = router

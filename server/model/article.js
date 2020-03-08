@@ -19,7 +19,10 @@ const article = sequelize.define('article', {
     type: Sequelize.INTEGER,
     defaultValue: 0
   },
-  author: Sequelize.STRING,
+  author: {
+    type: Sequelize.STRING,
+    defaultValue: 'ydiego'
+  },
   summary: Sequelize.TEXT,
   tag: Sequelize.STRING,
   content: Sequelize.TEXT,

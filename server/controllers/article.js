@@ -30,6 +30,8 @@ const list = async ctx => {
   const res = {
     data,
     total,
+    pageSize: +pageSize,
+    currentPage: page,
     totalPage: Math.ceil(total / pageSize)
   }
   ctx.body = responseSuccess(res)
@@ -51,6 +53,10 @@ const create = async ctx => {
 
 const detail = async ctx => {
   const {id} = ctx.query
+  if (!id) {
+    ctx.body = responseParamsError(null, 'invalid article id!')
+    return false
+  }
   const where = {id}
   const article = await Article.findOne({where})
   const visitCount = article.visitCount + 1
