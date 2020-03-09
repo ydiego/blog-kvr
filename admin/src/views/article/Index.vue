@@ -1,6 +1,6 @@
 <template>
   <div id="admin-article-container">
-    <a-form class="ant-advanced-search-form"  :form="form" @submit="handleSearch">
+    <a-form class="ant-advanced-search-form" layout="inline"  :form="form" @submit="handleSearch">
       <a-form-item label="title">
         <a-input
           v-model='searchParams.title'
@@ -11,8 +11,8 @@
         <a-button type="primary" html-type="submit">
           Search
         </a-button>
-        <a-button :style="{ marginLeft: '8px' }" @click="handleReset">
-          Clear
+        <a-button :style="{ marginLeft: '8px' }">
+          <router-link to="/admin/article/create">New</router-link>
         </a-button>
       </a-form-item>
     </a-form>
@@ -31,10 +31,10 @@
             @click='showArticleDetail(article.id)'
             style="margin-right: 5px"
             >
-            detail
+            Update
           </a-button>
 
-          <a-button type='danger' @click="deleteArticle(article.id)">delete</a-button>
+          <a-button type='danger' @click="deleteArticle(article.id)">Delete</a-button>
         </template>
       </a-table>
     </div>
@@ -144,7 +144,7 @@ export default {
     },
 
     showArticleDetail(id) {
-      this.$router.push({path: `/admin/article/detail`, query: {id}})
+      this.$router.push({path: `/admin/article/update`, query: {id}})
     }
   },
   mounted() {
@@ -153,24 +153,6 @@ export default {
 };
 </script>
 <style scoped>
-.ant-advanced-search-form {
-  padding: 24px;
-  background: #fbfbfb;
-  border: 1px solid #d9d9d9;
-  border-radius: 6px;
-}
-
-.ant-advanced-search-form .ant-form-item {
-  display: flex;
-}
-
-.ant-advanced-search-form .ant-form-item-control-wrapper {
-  flex: 1;
-}
-
-.ant-form {
-  max-width: none;
-}
 .search-result-list {
   margin-top: 16px;
   border: 1px dashed #e9e9e9;
@@ -178,6 +160,5 @@ export default {
   background-color: #fafafa;
   min-height: 200px;
   text-align: center;
-  padding-top: 80px;
 }
 </style>

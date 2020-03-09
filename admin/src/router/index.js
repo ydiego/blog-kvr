@@ -23,7 +23,7 @@ const routes = [
         component: CreateOrUpdate
       },
       {
-        path: 'article/detail',
+        path: 'article/update',
         component: CreateOrUpdate
       },
       {

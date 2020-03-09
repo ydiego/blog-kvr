@@ -10,7 +10,8 @@ import {
   Row, 
   Table,
   Modal,
-  message
+  message,
+  Select
 } from 'ant-design-vue';
 
 export default function registerComponents(Vue) {
@@ -28,6 +29,8 @@ export default function registerComponents(Vue) {
   Vue.component(Col.name, Col)
   Vue.component(Row.name, Row)
   Vue.component(Table.name, Table)
+  Vue.component(Select.name, Select)
+  Vue.component(Select.Option.name, Select.Option)
   Vue.component(Form.Item.name, Form.Item)
   Vue.prototype.$confirm = Modal.confirm
   Vue.prototype.$message = message

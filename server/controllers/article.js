@@ -68,11 +68,19 @@ const detail = async ctx => {
 
 const update = async ctx => {
   const {id, title, author = 'ydiego', summary, tag, content, content_md} = ctx.request.body
-  const res = await Article.update(
-    {id,title, author, summary, tag, content, content_md},
-    {where:{id}}
-  )
-  ctx.body = responseSuccess(null, '修改成功')
+  if (!id) {
+    ctx.body = responseParamsError(null, 'article id required')
+    return 
+  }
+  try {
+    await Article.update(
+      {id,title, author, summary, tag, content, content_md},
+      {where:{id}}
+    )
+    ctx.body = responseSuccess(null, '修改成功')
+  } catch (err) {
+    ctx.body = responseError(null, 'something went wrong')
+  }
 }
 
 const destroy = async ctx => {

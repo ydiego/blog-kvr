@@ -1,4 +1,5 @@
 const sequelize = require('../database')
+const {articleAuthor} = require('../../config/index')
 const Sequelize = require('sequelize')
 const moment = require('moment') 
 
@@ -21,7 +22,7 @@ const article = sequelize.define('article', {
   },
   author: {
     type: Sequelize.STRING,
-    defaultValue: 'ydiego'
+    defaultValue: articleAuthor
   },
   summary: Sequelize.TEXT,
   tag: Sequelize.STRING,
