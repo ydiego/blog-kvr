@@ -2,7 +2,8 @@ const adminRouter = require("./admin");
 const appRouter = require("./app");
 const apiRouter = require("./api");
 const initRouter = function(app) {
-  [adminRouter, appRouter, apiRouter].forEach(route => {
+  // 路由顺序
+  [adminRouter, apiRouter, appRouter, ].forEach(route => {
     app.use(route.routes()).use(route.allowedMethods());
   });
 };
