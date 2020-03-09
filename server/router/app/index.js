@@ -5,7 +5,7 @@ router.get('*', async ctx => {
 })
 
 router.get('/',async ctx => {
-  ctx.render('/public/index.html')
+  ctx.render('/app/build/index.html')
 })
 
 

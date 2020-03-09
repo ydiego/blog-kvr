@@ -30,9 +30,11 @@ template(app, {
 })
 
 app.use(session(SESSION_CONFIG, app));
-app.use(static(__dirname + "/public"));
+// app.use(static(__dirname + "/public"));
+app.use(static(__dirname + "/app/build"));
 // admin 静态资源地址
 app.use(static(__dirname + "/admin/dist"));
+
 app.use(cors());
 app.use(bodyParser());
 

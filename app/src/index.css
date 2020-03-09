@@ -1,0 +1,54 @@
+html,body, #root {
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+body {
+  margin: 0;
+  font-size: 14px;
+  font-family: Helvetica Neue,Helvetica,STHeiTi,Arial,sans-serif;
+  line-height: 1.5;
+  color: #333;
+  background-color: #fff;
+  min-height: 100%;
+  background: #eaeaea;
+}
+
+body, button, input, select, textarea {
+  color: #1a1a1a;
+  font-family: lucida grande,lucida sans unicode,lucida,helvetica,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;
+  font-size: 16px;
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+#root {
+  display: flex;
+  height: 100%;
+}
+
+a {
+  background: transparent;
+  text-decoration: none;
+  color: #08c;
+}
+
+ol, ul {
+  list-style: none outside none;
+}
+
+dd, dl, li, ol, ul {
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  border: 0;
+  vertical-align: middle;
+  max-width: 100%;
+}
+
+blockquote, figure, form, h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
+}
