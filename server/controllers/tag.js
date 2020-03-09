@@ -7,19 +7,13 @@ const {
 } = require('../utils/response')
 
 const list = async ctx => {
-  const {page = 1, pageSize, name} = ctx.query
+  const {page = 1, pageSize = 10, name} = ctx.query
   const where = {}
   if (name) {
     where.name = {
       [Op.like]: `%${name}%`
     }
   }
-  if (!pageSize) {
-    const data = await Tag.findAll({where})
-    ctx.body = responseSuccess(data)
-    return false
-  }
-  pageSize = pageSize || 10
   const {rows: data, count: total} = await Tag.findAndCountAll({
     where,
     offset: (page - 1) * pageSize,

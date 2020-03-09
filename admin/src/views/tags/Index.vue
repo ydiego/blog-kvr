@@ -1,40 +1,38 @@
 <template>
-  <div id="admin-article-container">
-    <a-form class="ant-advanced-search-form" layout="inline"  :form="form" @submit="handleSearch">
-      <a-form-item label="title">
+  <div id="admin-tags-container">
+    <a-form class="ant-advanced-search-form" layout="inline"  :form="form" >
+      <a-form-item label="tag">
         <a-input
-          v-model='searchParams.title'
-          placeholder="search article by title"
+          v-model='searchParams.name'
+          placeholder="search tag"
         />
       </a-form-item>
       <a-form-item>
-        <a-button type="primary" html-type="submit">
+        <a-button type="primary" @click="handleSearchTag">
           Search
         </a-button>
-        <a-button :style="{ marginLeft: '8px' }">
-          <router-link to="/admin/article/create">New</router-link>
-        </a-button>
+      </a-form-item>
+      <a-form-item label="tag">
+        <a-input
+          v-model='newTagName'
+          placeholder="new tag name"
+        />
+      </a-form-item>
+      <a-form-item>
+        <a-button :style="{ marginLeft: '8px' }" @click='handleAddTag'>New</a-button>
       </a-form-item>
     </a-form>
     <div class="search-result-list">
       <a-table
         :columns="columns"
-        :rowKey="article => article.id"
+        :rowKey="tag => tag.id"
         :dataSource="list"
         :pagination="pagination"
         :loading="loading"
         @change="handleTableChange"
       >
-        <template slot="action" slot-scope="article">
-          <a-button 
-            type='primary' 
-            @click='showArticleDetail(article.id)'
-            style="margin-right: 5px"
-            >
-            Update
-          </a-button>
-
-          <a-button type='danger' @click="deleteArticle(article.id)">Delete</a-button>
+        <template slot="action" slot-scope="tag">
+          <a-button type='danger' @click="deleteTag(tag.id)">Delete</a-button>
         </template>
       </a-table>
     </div>
@@ -47,20 +45,8 @@ const columns = [
     dataIndex: 'id'
   },
   { 
-    title: 'author',
-    dataIndex: 'author'
-  },
-  { 
-    title: 'title',
-    dataIndex: 'title'
-  },
-  { 
-    title: 'tag',
-    dataIndex: 'tag'
-  },
-  { 
-    title: 'visitCount',
-    dataIndex: 'visitCount'
+    title: 'name',
+    dataIndex: 'name'
   },
   { 
     title: 'createdAt',
@@ -78,22 +64,32 @@ export default {
       form: this.$form.createForm(this, { name: 'advanced_search' }),
       list: [],
       loading: false,
-      pagination: {},
-      searchParams: {
-        title: ''
+      pagination: {
+        pageSize: 10
       },
-      columns
+      searchParams: {
+        name: ''
+      },
+      columns,
+      newTagName: ''
     };
   },
   methods: {
-    handleSearch(e) {
+    handleSearchTag(e) {
       e.preventDefault();
       this.getList()
     },
-
-    handleReset() {
-      this.searchParams.title = ''
-      this.getList()
+    handleAddTag(e) {
+      e.preventDefault();
+      if (!this.newTagName) {
+        return this.$message.error('tag name required')
+      }
+      this.$http.post('/api/tag/create', {name: this.newTagName}).then(res => {
+        this.$message.success(res.msg)
+        this.getList()
+      }).catch(() => {
+        this.$message.error('添加失败')
+      })
     },
 
     handleTableChange(pagination) {
@@ -105,7 +101,7 @@ export default {
 
     getList() {
       this.loading = true
-      this.$http.get('/api/article/list', {...this.pagination, ...this.searchParams}).then(res => {
+      this.$http.get('/api/tag/list', {...this.pagination, ...this.searchParams}).then(res => {
         this.loading = false
         const { data, ...pagination} = res.data
         this.list = data
@@ -118,16 +114,16 @@ export default {
       })
     },
 
-    deleteArticle(id) {
+    deleteTag(id) {
       const _ = this
       this.$confirm({
-        title: '确定删除文章?',
-        content: '删除操作不可回退',
+        title: 'Confirm delete this tag?',
+        content: '',
         okText: 'Yes',
         okType: 'danger',
         cancelText: 'No',
         onOk() {
-          _.$http.post('/api/article/destroy', {
+          _.$http.post('/api/tag/destroy', {
             id
           }).then( res => {
             console.log(res);
@@ -142,26 +138,9 @@ export default {
       console.log(id);
       
     },
-
-    showArticleDetail(id) {
-      this.$router.push({path: `/admin/article/update`, query: {id}})
-    }
   },
   mounted() {
     this.getList()
   }
 };
 </script>
-<style scoped>
-.search-result-list {
-  margin-top: 16px;
-  border: 1px dashed #e9e9e9;
-  border-radius: 6px;
-  background-color: #fafafa;
-  min-height: 200px;
-  text-align: center;
-}
-.ant-layout-content {
-  min-height: auto;
-}
-</style>

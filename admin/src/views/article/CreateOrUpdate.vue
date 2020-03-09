@@ -88,7 +88,7 @@ export default {
     },
     getTags() {
       this.$http.get('/api/tag/list').then(res => {
-        const {data = []} = res
+        const {data: {data = []}} = res
         const tags = []
         data.forEach(d => {
           tags.push(d.name)

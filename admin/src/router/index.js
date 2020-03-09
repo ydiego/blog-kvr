@@ -4,7 +4,7 @@ import Home from "../views/Home.vue";
 import User from '../views/User.vue'
 import Article from '../views/article/Index.vue'
 import CreateOrUpdate from '../views/article/CreateOrUpdate.vue'
-import Tags from '../views/Tags.vue'
+import Tags from '../views//tags/Index'
 
 Vue.use(VueRouter);
 
