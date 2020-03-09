@@ -110,11 +110,9 @@ export default {
         const { data, ...pagination} = res.data
         this.list = data
         this.pagination = pagination
-        console.log(this.list, pagination);
         
-      }).catch(err => {
+      }).catch(() => {
         this.loading = false
-        console.log(err);
       })
     },
 
@@ -130,16 +128,11 @@ export default {
           _.$http.post('/api/article/destroy', {
             id
           }).then( res => {
-            console.log(res);
             _.$message.success(res.msg)
             _.getList()
           })
         },
-        onCancel() {
-          console.log('Cancel');
-        },
       });
-      console.log(id);
       
     },
 
