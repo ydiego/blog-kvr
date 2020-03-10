@@ -4,8 +4,8 @@
   </div>
 </template>
 <style>
-  #app {
-    height: 100%;
-    display: flex;
-  }
+#app {
+  height: 100%;
+  display: flex;
+}
 </style>

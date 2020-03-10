@@ -1,9 +1,14 @@
 <template>
   <div id="admin-article-container">
-    <a-form class="ant-advanced-search-form" layout="inline"  :form="form" @submit="handleSearch">
+    <a-form
+      class="ant-advanced-search-form"
+      layout="inline"
+      :form="form"
+      @submit="handleSearch"
+    >
       <a-form-item label="title">
         <a-input
-          v-model='searchParams.title'
+          v-model="searchParams.title"
           placeholder="search article by title"
         />
       </a-form-item>
@@ -26,15 +31,17 @@
         @change="handleTableChange"
       >
         <template slot="action" slot-scope="article">
-          <a-button 
-            type='primary' 
-            @click='showArticleDetail(article.id)'
+          <a-button
+            type="primary"
+            @click="showArticleDetail(article.id)"
             style="margin-right: 5px"
-            >
+          >
             Update
           </a-button>
 
-          <a-button type='danger' @click="deleteArticle(article.id)">Delete</a-button>
+          <a-button type="danger" @click="deleteArticle(article.id)"
+            >Delete</a-button
+          >
         </template>
       </a-table>
     </div>
@@ -42,45 +49,45 @@
 </template>
 <script>
 const columns = [
-  { 
-    title: 'id',
-    dataIndex: 'id'
-  },
-  { 
-    title: 'author',
-    dataIndex: 'author'
-  },
-  { 
-    title: 'title',
-    dataIndex: 'title'
-  },
-  { 
-    title: 'tag',
-    dataIndex: 'tag'
-  },
-  { 
-    title: 'visitCount',
-    dataIndex: 'visitCount'
-  },
-  { 
-    title: 'createdAt',
-    dataIndex: 'createdAt'
+  {
+    title: "id",
+    dataIndex: "id"
   },
   {
-    title: 'Action',
-    key: 'action',
-    scopedSlots: { customRender: 'action' }
+    title: "author",
+    dataIndex: "author"
+  },
+  {
+    title: "title",
+    dataIndex: "title"
+  },
+  {
+    title: "tag",
+    dataIndex: "tag"
+  },
+  {
+    title: "visitCount",
+    dataIndex: "visitCount"
+  },
+  {
+    title: "createdAt",
+    dataIndex: "createdAt"
+  },
+  {
+    title: "Action",
+    key: "action",
+    scopedSlots: { customRender: "action" }
   }
-]
+];
 export default {
   data() {
     return {
-      form: this.$form.createForm(this, { name: 'advanced_search' }),
+      form: this.$form.createForm(this, { name: "advanced_search" }),
       list: [],
       loading: false,
       pagination: {},
       searchParams: {
-        title: ''
+        title: ""
       },
       columns
     };
@@ -88,60 +95,63 @@ export default {
   methods: {
     handleSearch(e) {
       e.preventDefault();
-      this.getList()
+      this.getList();
     },
 
     handleReset() {
-      this.searchParams.title = ''
-      this.getList()
+      this.searchParams.title = "";
+      this.getList();
     },
 
     handleTableChange(pagination) {
-      const pager = {...pagination}
-      pager.page = pagination.current
-      this.pagination = pager
-      this.getList()
+      const pager = { ...pagination };
+      pager.page = pagination.current;
+      this.pagination = pager;
+      this.getList();
     },
 
     getList() {
-      this.loading = true
-      this.$http.get('/api/article/list', {...this.pagination, ...this.searchParams}).then(res => {
-        this.loading = false
-        const { data, ...pagination} = res.data
-        this.list = data
-        this.pagination = pagination
-        
-      }).catch(() => {
-        this.loading = false
-      })
+      this.loading = true;
+      this.$http
+        .get("/api/article/list", { ...this.pagination, ...this.searchParams })
+        .then(res => {
+          this.loading = false;
+          const { data, ...pagination } = res.data;
+          this.list = data;
+          this.pagination = pagination;
+        })
+        .catch(() => {
+          this.loading = false;
+        });
     },
 
     deleteArticle(id) {
-      const _ = this
+      const _ = this;
       this.$confirm({
-        title: '确定删除文章?',
-        content: '删除操作不可回退',
-        okText: 'Yes',
-        okType: 'danger',
-        cancelText: 'No',
+        title: "确定删除文章?",
+        content: "删除操作不可回退",
+        okText: "Yes",
+        okType: "danger",
+        cancelText: "No",
         onOk() {
-          _.$http.post('/api/article/destroy', {
-            id
-          }).then( res => {
-            _.$message.success(res.msg)
-            _.getList()
-          })
-        },
+          _.$http
+            .post("/api/article/destroy", {
+              id
+            })
+            .then(res => {
+              _.$message.success(res.msg);
+              _.getList();
+            });
+        }
       });
-      
     },
 
     showArticleDetail(id) {
-      this.$router.push({path: `/admin/article/update`, query: {id}})
+      this.$router.push({ path: `/admin/article/update`, query: { id } });
     }
   },
   mounted() {
-    this.getList()
+    this.getList();
   }
 };
 </script>
