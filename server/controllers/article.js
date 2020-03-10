@@ -59,9 +59,36 @@ const detail = async ctx => {
   }
   const where = {id}
   const article = await Article.findOne({where})
+
+  const prev = await Article.findOne({
+    attributes: ['id', 'title'],
+    where: {
+      'id' : {
+        [Op.lt]: id
+      },
+    },
+    order: [
+      ['id', 'DESC']
+    ]
+  })
+
+  const next = await Article.findOne({
+    attributes: ['id', 'title'],
+    where: {
+      'id' : {
+        [Op.gt]: id
+      },
+    },
+    order: [
+      ['id', 'ASC']
+    ]
+  })
+  
   const visitCount = article.visitCount + 1
   Article.update({visitCount}, {where})
   article.visitCount = visitCount
+  article.setDataValue('prev', prev)
+  article.setDataValue('next', next)
   article.tag = article.tag && article.tag.split(',')
   ctx.body = responseSuccess(article)
 }
