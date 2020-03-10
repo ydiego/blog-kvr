@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ArticleItem from "./item";
+import './index.css'
 import {Article} from '../../../types'
 
 interface Props{}

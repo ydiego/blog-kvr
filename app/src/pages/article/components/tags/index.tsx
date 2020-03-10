@@ -6,6 +6,7 @@ import { Article } from '../../../../types'
 type ArticleTagsType = {
   data: Article
 }
+
 const ArticleTags:React.FC<ArticleTagsType> = ({data}) => {
 
   const tags = data.tag ? data.tag.split(',') : []
@@ -18,8 +19,8 @@ const ArticleTags:React.FC<ArticleTagsType> = ({data}) => {
           tags.map(tag => {
             const randomColor = Math.floor(Math.random() * 5) + 1
             return (
-              <li className="article-tag-list-item">
-                <a href="javascript:void(0)" className={`article-tag-list-link color${randomColor}`}>{tag}</a>
+              <li className="article-tag-list-item" key={`${data.title}_${tag}`}>
+                <a className={`article-tag-list-link color${randomColor}`}>{tag}</a>
               </li>
             )
           })
