@@ -1,4 +1,5 @@
 import React from 'react'
+import {BlogAuthor} from '../../../config/index'
 import './index.css'
 const Footer = () => {
 
@@ -8,7 +9,7 @@ const Footer = () => {
     <footer id="footer">
       <div className="outer">
         <div id="footer-info">
-            © {year} YDiego
+            © {year} {BlogAuthor}
         </div>
       </div>
     </footer>

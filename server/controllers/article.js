@@ -1,4 +1,5 @@
 const Article = require('../model/article')
+const {articleAuthor} = require('../../config/index')
 const Op = require('sequelize').Op
 const {
   responseError, 
@@ -40,12 +41,12 @@ const list = async ctx => {
 const create = async ctx => {
   const params = ctx.request.body
   if (!params.title) {
-    ctx.body = responseParamsError(null, '标题不能为空')
+    ctx.body = responseParamsError(null, 'title must be required!')
     return false
   }
   try {
     await Article.create(params)
-    ctx.body = responseSuccess(null, '添加成功!')
+    ctx.body = responseSuccess(null, 'success!')
   } catch (err) {
     ctx.body = responseError(null, err.errors)
   }
@@ -60,43 +61,38 @@ const detail = async ctx => {
   const where = {id}
   const article = await Article.findOne({where})
 
-  const prev = await Article.findOne({
-    attributes: ['id', 'title'],
-    where: {
-      'id' : {
-        [Op.lt]: id
-      },
-    },
-    order: [
-      ['id', 'DESC']
-    ]
-  })
-
-  const next = await Article.findOne({
-    attributes: ['id', 'title'],
-    where: {
-      'id' : {
-        [Op.gt]: id
-      },
-    },
-    order: [
-      ['id', 'ASC']
-    ]
-  })
+  const prev = await getArticleBetweenId(id, 'lt', 'DESC')
+  const next = await getArticleBetweenId(id, 'gt', 'ASC')
   
   const visitCount = article.visitCount + 1
   Article.update({visitCount}, {where})
   article.visitCount = visitCount
+  article.tag = article.tag && article.tag.split(',')
+
   article.setDataValue('prev', prev)
   article.setDataValue('next', next)
-  article.tag = article.tag && article.tag.split(',')
   ctx.body = responseSuccess(article)
 }
 
+async function getArticleBetweenId(id, direct, desc) {
+  const r = await Article.findOne({
+    attributes: ['id', 'title'],
+    where: {
+      'id' : {
+        [Op[direct]]: id
+      },
+    },
+    order: [
+      ['id', desc]
+    ]
+  })
+  return r
+}
+
 const update = async ctx => {
-  const {id, title, author = 'ydiego', summary, tag, content, content_md} = ctx.request.body
+  const {id, title, author = articleAuthor, summary, tag, content, content_md} = ctx.request.body
   if (!id) {
-    ctx.body = responseParamsError(null, 'article id required')
+    ctx.body = responseParamsError(null, 'invalid article id')
     return 
   }
   try {
@@ -104,7 +100,7 @@ const update = async ctx => {
       {id,title, author, summary, tag, content, content_md},
       {where:{id}}
     )
-    ctx.body = responseSuccess(null, '修改成功')
+    ctx.body = responseSuccess(null, 'updated')
   } catch (err) {
     ctx.body = responseError(null, 'something went wrong')
   }
@@ -113,11 +109,11 @@ const update = async ctx => {
 const destroy = async ctx => {
   const {id} = ctx.request.body
   if (!id) {
-    ctx.body = responseParamsError(null, '文章id不能为空')
+    ctx.body = responseParamsError(null, 'article id required')
     return false
   }
   await Article.destroy({where: {id}})
-  ctx.body = responseSuccess(null, '删除成功')
+  ctx.body = responseSuccess(null, 'deleted')
 }
 
 module.exports = {

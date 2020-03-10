@@ -38,12 +38,6 @@ app.use(static(__dirname + "/admin/dist"));
 app.use(cors());
 app.use(bodyParser());
 
-// common info
-// app.use(async (ctx, next) => {
-//     ctx.state.author = 'ydiego'
-//     await next()
-// })
-
 initRouter(app);
 
 app.listen(4000);
