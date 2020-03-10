@@ -1,0 +1,46 @@
+.article {
+  margin: 30px;
+  position: relative;
+  border: 1px solid #ddd;
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  background: #fff;
+  transition: all 0.2s ease-in;
+}
+.article-summary {
+  line-height: 1.8em;
+  padding-right: 7.6923%;
+  padding-left: 7.6923%;
+}
+.article p {
+  margin: 0 0 1.75em;
+}
+.article-summary p {
+  margin-top: 10px;
+}
+
+.article-info-index.article-info {
+  padding-top: 20px;
+  margin: 30px 7.6923% 0;
+  min-height: 72px;
+  border-top: 1px solid #ddd;
+}
+
+@media screen and (max-width: 800px) {
+  .article {
+    padding: 10px;
+    margin: 10px 0;
+    border: 0;
+    font-size: 16px;
+    color: #555;
+  }
+  .article .article-summary {
+    padding: 10px 0 30px;
+  }
+  .article-info-index.article-info {
+    min-height: 40px;
+    padding-top: 10px;
+    margin: 0;
+    border-top: 1px solid #ddd;
+}
+}

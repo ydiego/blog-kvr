@@ -6,6 +6,13 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "1105000",
+      "name": "日历",
+      "font_class": "calendar",
+      "unicode": "e609",
+      "unicode_decimal": 58889
+    },
+    {
       "icon_id": "608170",
       "name": "引号",
       "font_class": "baojiaquotation",

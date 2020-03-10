@@ -32,14 +32,14 @@ const article = sequelize.define('article', {
     type: Sequelize.DATE,
     defaultValue: Sequelize.NOW,
     get() {
-      return moment(this.getDataValue('createdAt')).format('YYYY-MM-DD HH:mm')
+      return moment(this.getDataValue('createdAt')).format('YYYY-MM-DD')
     }
   },
   updatedAt: {
     type: Sequelize.DATE,
     defaultValue: Sequelize.NOW,
     get() {
-      return moment(this.getDataValue('updatedAt')).format('YYYY-MM-DD HH:mm')
+      return moment(this.getDataValue('updatedAt')).format('YYYY-MM-DD hh:mm:dd')
     }
   }
 },{})

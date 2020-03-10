@@ -10,6 +10,9 @@ export default [
     strict: true
   }, 
   {
+    path: '/article/:id'
+  },
+  {
     path: '/about'
   }
 ]

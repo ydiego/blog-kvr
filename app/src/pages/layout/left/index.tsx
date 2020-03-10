@@ -1,5 +1,4 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
 import Github from '../components/github'
 import Menu from '../components/menu'
 import Avatar from '../components/avatar'

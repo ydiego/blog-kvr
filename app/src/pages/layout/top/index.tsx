@@ -9,7 +9,7 @@ import '../index.css'
 const LayoutMobileNav: React.FC = () => {
   return (
     <nav id="mobile-nav">
-      <div className="overlay js-overlay"></div>
+      <div className="overlay"></div>
       <div className="introduce">
         <header id="header" className="inner">
           <Avatar />
