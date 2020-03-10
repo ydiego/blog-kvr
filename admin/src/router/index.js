@@ -1,10 +1,10 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Home from "../views/Home.vue";
-import User from "../views/User.vue";
-import Article from "../views/article/Index.vue";
-import CreateOrUpdate from "../views/article/CreateOrUpdate.vue";
-import Tags from "../views//tags/Index";
+const Home = () => import(/* webpackChunkName: "group-home" */"../views/Home.vue");
+const User = () => import(/* webpackChunkName: "group-user" */"../views/User.vue");
+const Article = () => import(/* webpackChunkName: "group-article" */"../views/article/Index.vue");
+const CreateOrUpdate = () => import(/* webpackChunkName: "group-article" */"../views/article/CreateOrUpdate.vue");
+const Tags = () => import(/* webpackChunkName: "group-tags" */"../views//tags/Index");
 
 Vue.use(VueRouter);
 
