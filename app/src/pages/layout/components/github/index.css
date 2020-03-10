@@ -1,0 +1,28 @@
+.header-nav .social {
+  margin-top: 10px;
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.header-nav .social a {
+  border-radius: 50%;
+  display: -moz-inline-stack;
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  zoom: 1;
+  *display: inline;
+  margin: 0 8px 15px;
+  -webkit-transition: .3s;
+  transition: .3s;
+  text-align: center;
+  color: #fff;
+  opacity: .7;
+  width: 28px;
+  height: 28px;
+  line-height: 26px;
+  background: #afb6ca;
+  cursor: pointer;
+}

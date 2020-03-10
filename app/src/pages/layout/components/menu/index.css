@@ -1,0 +1,55 @@
+.left-col .header-menu {
+  line-height: 31px;
+  text-transform: uppercase;
+  float: none;
+  min-height: 150px;
+  margin-left: -12px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.left-col .header-menu li {
+  cursor: default;
+}
+
+.left-col .header-menu li a {
+  font-size: 14px;
+  min-width: 300px;
+}
+
+@media screen and (max-width: 800px) {
+  .header-menu {
+    height: auto;
+    margin: 10px 0 20px;
+  }
+  .header-menu ul {
+    text-align: center;
+    cursor: default;
+    display: flex;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: space-around;
+    position: relative;
+    z-index: 1;
+    border: 1px solid #a0a0a0;
+    border-radius: 3px;
+  }
+  .header-menu li {
+    border-left: 1px solid #a0a0a0;
+    width: 33.333333333333%
+  }
+  .header-menu li:first-child {
+    border-left: 0;
+  }
+  .header-menu li a {
+    font-size: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: block;
+    color: #a0a0a0;
+    width: auto;
+  }
+}

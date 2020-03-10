@@ -1,0 +1,20 @@
+.header-author {
+  text-align: center;
+  margin: .67em 0;
+  font-family: Roboto,serif;
+  font-size: 30px;
+  transition: .3s;
+}
+
+@media screen and (max-width: 800px) {
+  
+  #mobile-nav .header-author {
+    margin: 0;
+    position: relative;
+    z-index: 2;
+    color: #424242;
+  }
+  .header-author a {
+    color: #696969;
+  }
+}
