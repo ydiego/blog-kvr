@@ -1,0 +1,8 @@
+.wrapper {
+  margin-bottom: 80px;
+}
+@media screen and (max-width: 800px) {
+  .wrapper {
+    margin-bottom: 0;
+  }
+}

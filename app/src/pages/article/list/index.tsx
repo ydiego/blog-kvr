@@ -1,9 +1,12 @@
 import React, { Component } from "react";
-import ArticleItem from "./item";
-import './index.css'
-import {Article} from '../../../types'
+import ArticleItem from "../item";
+import '../styles/articleWrapper.css'
+import {
+  Article,
+  ArticleListResponse
+} from '../../../types'
 
-interface Props{}
+interface Props { }
 
 interface State {
   list: Array<Article>
@@ -17,7 +20,7 @@ class ArticleList extends Component<Props, State> {
   }
 
   componentDidMount() {
-    this.$http.get('/api/article/list').then((res: any) => {
+    this.$http.get('/api/article/list').then((res: ArticleListResponse) => {
       this.setState({
         list: res.data.data
       })
@@ -25,7 +28,7 @@ class ArticleList extends Component<Props, State> {
   }
 
   render() {
-    const {list = []} = this.state
+    const { list = [] } = this.state
     if (!list.length) return 'this guy was os lazy!'
     return (
       <div className="wrapper">

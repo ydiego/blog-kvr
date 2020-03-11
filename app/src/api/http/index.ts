@@ -32,7 +32,7 @@ export default {
       data,
     })
   },
-  get(url:string, params:any) {
+  get(url:string, params?:object) {
     return http({
       method: 'get',
       url,
