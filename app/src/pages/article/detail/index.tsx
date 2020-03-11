@@ -57,18 +57,11 @@ class ArticleDetail extends Component<Props, State> {
 
   render() {
     const {data} = this.state
-
-    if (!data) {
-      return (
-        <div className='wrapper'>
-          '该文章不存在'
-        </div>
-      )
-    }
-
     return (
       <div className='wrapper'>
-        <ArticleItem data={data} isDetail={true}></ArticleItem>
+        {
+          data ? <ArticleItem data={data} isDetail={true}></ArticleItem> : '该文章不存在'
+        }
       </div>
     )
   }
