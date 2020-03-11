@@ -5,6 +5,12 @@ const databaseConfig = {
   linkConfig: {
     host: "127.0.0.1",
     dialect: "mysql",
+    define: {
+      charset: 'utf8',
+      dialectOptions: {
+        collate: 'utf8_general_ci'
+      }
+    },
     operatorsAliases: false,
     pool: {
       max: 5,
