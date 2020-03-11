@@ -72,7 +72,6 @@ export default {
   methods: {
     contentChange(value, render) {
       // render 为 markdown 解析后的结果[html]
-      console.log(value, render, this.formData)
       this.formData.content = render;
     },
     handleSelectChange(selectedTags) {
@@ -109,6 +108,8 @@ export default {
       this.$http
         .post(`/api/article/${this.type}`, this.formData)
         .then(res => {
+          this.$message.success(res.msg);
+          console.log(33)
           if (this.type == "create") {
             this.formData = {
               title: "",
@@ -117,7 +118,6 @@ export default {
               content_md: ""
             };
           }
-          this.$message.success(res.msg);
         })
         .catch(err => {
           this.$message.error(err.msg);
@@ -134,7 +134,7 @@ export default {
           content: '',
           content_md
         };
-        this.selectedTags = tag || [];
+        this.selectedTags = tag ? tag.split(',') : [];
       });
     }
   },

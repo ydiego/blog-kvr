@@ -6,6 +6,27 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "583322",
+      "name": "eye",
+      "font_class": "eye",
+      "unicode": "e60a",
+      "unicode_decimal": 58890
+    },
+    {
+      "icon_id": "7588135",
+      "name": "左箭头",
+      "font_class": "zuojiantou",
+      "unicode": "e626",
+      "unicode_decimal": 58918
+    },
+    {
+      "icon_id": "7588137",
+      "name": "右箭头",
+      "font_class": "youjiantou",
+      "unicode": "e627",
+      "unicode_decimal": 58919
+    },
+    {
       "icon_id": "1105000",
       "name": "日历",
       "font_class": "calendar",

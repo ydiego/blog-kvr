@@ -9,8 +9,8 @@ export interface Article{
   title: string
   updatedAt: string
   visitCount: 7,
-  prev?: Array<object> | null
-  next?: Array<object> | null
+  prev?: any
+  next?: any
 }
 
 export interface ArticleDetailResponse{

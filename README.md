@@ -16,7 +16,13 @@ web: cd app & yarn start | yarn build
 - [x] tag api
 - [x] admin article 
 - [x] admin tag
+- [ ] refactor api use
+- [ ] article timeline
 - [ ] admin user
 - [ ] user api
-- [ ] web article detail
+- [x] web article detail
 - [ ] old blog article migrate
+- [ ] error catch
+- [ ] script shell
+- [ ] file upload
+- [ ] create table visual ?

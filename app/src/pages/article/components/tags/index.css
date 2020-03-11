@@ -2,11 +2,11 @@
   display: flex;
   align-items: center;
 }
-.article-category .icon, .article-tag i {
+.article-tag i {
   color: #999;
   float: left;
   margin-right: 10px;
-  margin-top: 6px;
+  margin-top: 0;
   font-size: 20px;
 }
 .tagcloud a {

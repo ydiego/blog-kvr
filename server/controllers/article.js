@@ -4,7 +4,8 @@ const Op = require('sequelize').Op
 const {
   responseError, 
   responseSuccess, 
-  responseParamsError
+  responseParamsError,
+  responseNoData
 } = require('../utils/response')
 
 const list = async ctx => {
@@ -61,13 +62,17 @@ const detail = async ctx => {
   const where = {id}
   const article = await Article.findOne({where})
 
+  if (!article) {
+    ctx.body = responseNoData('文章不存在')
+    return false
+  }
+
   const prev = await getArticleBetweenId(id, 'lt', 'DESC')
   const next = await getArticleBetweenId(id, 'gt', 'ASC')
   
   const visitCount = article.visitCount + 1
   Article.update({visitCount}, {where})
   article.visitCount = visitCount
-  article.tag = article.tag && article.tag.split(',')
 
   article.setDataValue('prev', prev)
   article.setDataValue('next', next)

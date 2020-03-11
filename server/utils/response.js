@@ -29,8 +29,17 @@ function responseParamsError(data, msg = '') {
   }
 }
 
+function responseNoData(msg = 'data not found') {
+  return {
+    code: API_NODATA,
+    data: null,
+    msg
+  }
+}
+
 module.exports = {
   responseError,
   responseSuccess,
-  responseParamsError
+  responseParamsError,
+  responseNoData
 }
