@@ -30,6 +30,11 @@ const list = async ctx => {
   ctx.body = responseSuccess(res)
 }
 
+const listAll = async ctx => {
+  const data = await Tag.findAll()
+  ctx.body = responseSuccess(data)
+}
+
 const create = async ctx => {
   const params = ctx.request.body
   if (!params.name || params.name === '') {
@@ -52,5 +57,6 @@ const destroy = async ctx => {
 module.exports = {
   create,
   list,
+  listAll,
   destroy
 }

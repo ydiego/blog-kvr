@@ -1,8 +1,5 @@
 <template>
-  <a-form
-    :label-col="formItemLayout.labelCol"
-    :wrapper-col="formItemLayout.wrapperCol"
-  >
+  <a-form :label-col="formItemLayout.labelCol" :wrapper-col="formItemLayout.wrapperCol">
     <a-form-item label="title">
       <a-input v-model="formData.title" placeholder="Please input title" />
     </a-form-item>
@@ -15,12 +12,7 @@
         @change="handleSelectChange"
         style="width: 100%"
       >
-        <a-select-option
-          v-for="item in filteredOptions"
-          :key="item"
-          :value="item"
-          >{{ item }}</a-select-option
-        >
+        <a-select-option v-for="item in filteredOptions" :key="item" :value="item">{{ item }}</a-select-option>
       </a-select>
     </a-form-item>
     <a-form-item label="summary">
@@ -35,15 +27,17 @@
       />
     </a-form-item>
     <a-form-item :wrapper-col="{ span: 8, offset: 2 }">
-      <a-button type="primary" html-type="submit" @click="handleSubmit">
-        {{ type == "create" ? "Submit" : "Update" }}
-      </a-button>
+      <a-button
+        type="primary"
+        html-type="submit"
+        @click="handleSubmit"
+      >{{ type == "create" ? "Submit" : "Update" }}</a-button>
     </a-form-item>
   </a-form>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState } from "vuex";
 import { mavonEditor } from "mavon-editor";
 import "mavon-editor/dist/css/index.css";
 export default {
@@ -69,7 +63,7 @@ export default {
       return this.selectedItems.filter(o => !this.selectedTags.includes(o));
     },
     ...mapState({
-      selectedItems: state => state.tags.tags,
+      selectedItems: state => state.tags.tags
     })
   },
   methods: {
@@ -106,7 +100,7 @@ export default {
               content: "",
               content_md: ""
             };
-            this.$store.dispatch('article/clearEdit')
+            this.$store.dispatch("article/clearEdit");
           }
         })
         .catch(err => {
@@ -121,23 +115,26 @@ export default {
         this.formData = {
           title,
           summary,
-          content: '',
+          content: "",
           content_md
         };
-        this.selectedTags = tag ? tag.split(',') : [];
+        this.selectedTags = tag ? tag.split(",") : [];
       });
     }
   },
   mounted() {
-    const { params: {type}, query } = this.$route;
+    const {
+      params: { type },
+      query
+    } = this.$route;
     if (type == "update") {
       this.getArticleById(query.id);
       this.type = type;
     }
-    this.$store.dispatch('tags/getAllTags');
+    this.$store.dispatch("tags/getAllTags");
   },
   beforeDestroy() {
-    this.$store.dispatch('article/updateEdit', this.formData)
+    this.$store.dispatch("article/updateEdit", this.formData);
   }
 };
 </script>
