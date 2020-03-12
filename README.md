@@ -16,6 +16,7 @@ web: cd app & yarn start | yarn build
 - [x] tag api
 - [x] admin article 
 - [x] admin tag
+- [x] cloud serve publish
 - [ ] refactor api use
 - [ ] article timeline
 - [ ] admin user

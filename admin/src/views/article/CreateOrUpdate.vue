@@ -71,7 +71,6 @@ export default {
   },
   methods: {
     contentChange(value, render) {
-      // render 为 markdown 解析后的结果[html]
       this.formData.content = render;
     },
     handleSelectChange(selectedTags) {
@@ -109,7 +108,6 @@ export default {
         .post(`/api/article/${this.type}`, this.formData)
         .then(res => {
           this.$message.success(res.msg);
-          console.log(33)
           if (this.type == "create") {
             this.formData = {
               title: "",

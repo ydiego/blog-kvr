@@ -5,6 +5,8 @@ const {
   API_PARAMS_ERROR
 }  = require('../utils/api_enums')
 
+const defaultErrorMsg = 'something went wrong!'
+
 function responseSuccess(data, msg = '') {
   return {
     code: API_SUCCESS,
@@ -13,7 +15,7 @@ function responseSuccess(data, msg = '') {
   }
 }
 
-function responseError(data, msg = '') {
+function responseError(data, msg = defaultErrorMsg) {
   return {
     code: API_FAILED,
     data,
@@ -21,7 +23,7 @@ function responseError(data, msg = '') {
   }
 }
 
-function responseParamsError(data, msg = '') {
+function responseParamsError(data, msg = defaultErrorMsg) {
   return {
     code: API_PARAMS_ERROR,
     data,

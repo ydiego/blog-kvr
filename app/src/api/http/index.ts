@@ -1,7 +1,8 @@
 import axios, { AxiosInstance } from 'axios'
+const config =require('../../../package.json')
 
 const baseUrl:string = process.env.NODE_ENV === 'development' ?
-'http://localhost:4000/' :
+config.proxy:
 '/';
 
 const http:AxiosInstance = axios.create({
