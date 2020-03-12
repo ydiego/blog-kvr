@@ -19,11 +19,7 @@ const routes = [
         component: Article
       },
       {
-        path: "article/create",
-        component: CreateOrUpdate
-      },
-      {
-        path: "article/update",
+        path: "article/:type",
         component: CreateOrUpdate
       },
       {

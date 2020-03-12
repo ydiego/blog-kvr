@@ -43,6 +43,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import { mavonEditor } from "mavon-editor";
 import "mavon-editor/dist/css/index.css";
 export default {
@@ -54,7 +55,6 @@ export default {
         wrapperCol: { span: 20 }
       },
       selectedTags: [],
-      selectedItems: [],
       formData: {
         title: "",
         summary: "",
@@ -67,7 +67,10 @@ export default {
   computed: {
     filteredOptions() {
       return this.selectedItems.filter(o => !this.selectedTags.includes(o));
-    }
+    },
+    ...mapState({
+      selectedItems: state => state.tags.tags,
+    })
   },
   methods: {
     contentChange(value, render) {
@@ -91,18 +94,6 @@ export default {
         this.createOrUpdateArticle();
       }
     },
-    getTags() {
-      this.$http.get("/api/tag/list").then(res => {
-        const {
-          data: { data = [] }
-        } = res;
-        const tags = [];
-        data.forEach(d => {
-          tags.push(d.name);
-        });
-        this.selectedItems = tags;
-      });
-    },
     createOrUpdateArticle() {
       this.$http
         .post(`/api/article/${this.type}`, this.formData)
@@ -115,6 +106,7 @@ export default {
               content: "",
               content_md: ""
             };
+            this.$store.dispatch('article/clearEdit')
           }
         })
         .catch(err => {
@@ -137,14 +129,15 @@ export default {
     }
   },
   mounted() {
-    const { path, query } = this.$route;
-    const pr = path.split("/");
-    const type = pr[pr.length - 1];
+    const { params: {type}, query } = this.$route;
     if (type == "update") {
       this.getArticleById(query.id);
       this.type = type;
     }
-    this.getTags();
+    this.$store.dispatch('tags/getAllTags');
+  },
+  beforeDestroy() {
+    this.$store.dispatch('article/updateEdit', this.formData)
   }
 };
 </script>
