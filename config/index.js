@@ -25,7 +25,7 @@ const articleAuthor = 'ydiego'
 
 const tokenConfig = {
   salt: 'kvr-blog',
-  expire: 10 // second
+  expire: 60 * 60 * 1 // an hour
 }
 module.exports = {
   databaseConfig,
