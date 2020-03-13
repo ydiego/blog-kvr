@@ -4,9 +4,24 @@
 - web: create-react-app + typescript
 
 ### run
-server: yarn start
-admin: cd admin & yarn serve | yarn build
-web: cd app & yarn start | yarn build
+```
+// serer: 
+yarn start
+```
+```
+//admin:
+cd admin & yarn serve | yarn build
+```
+```
+//web:
+cd app & yarn start | yarn build
+```
+
+### config file 
+
+/config/index.js // some server config such like database 、 token
+
+/app/.env // blog name and github address
 
 ### todo
 - [x] server build
