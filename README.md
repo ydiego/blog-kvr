@@ -20,7 +20,8 @@ web: cd app & yarn start | yarn build
 - [ ] refactor api use
 - [ ] article timeline
 - [ ] admin user
-- [ ] user api
+- [x] user api login registe
+- [ ] api auth
 - [x] web article detail
 - [ ] old blog article migrate
 - [ ] error catch

@@ -1,10 +1,15 @@
 const Router = require("koa-router");
 const Tag = require("../../controllers/tag");
+const User = require("../../controllers/user");
 const Article = require("../../controllers/article");
 
 const router = new Router({
   prefix: "/api"
 });
+
+router.post('/register', User.register)
+
+router.post('/login', User.login)
 
 router.post("/tag/create", Tag.create);
 

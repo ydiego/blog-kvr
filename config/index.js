@@ -23,7 +23,12 @@ const databaseConfig = {
 
 const articleAuthor = 'ydiego'
 
+const tokenConfig = {
+  salt: 'kvr-blog',
+  expire: 10 // second
+}
 module.exports = {
   databaseConfig,
-  articleAuthor
+  articleAuthor,
+  tokenConfig
 };
