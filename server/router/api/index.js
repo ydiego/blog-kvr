@@ -2,6 +2,7 @@ const Router = require("koa-router");
 const Tag = require("../../controllers/tag");
 const User = require("../../controllers/user");
 const Article = require("../../controllers/article");
+const Auth = require('../../middleware/auth')
 
 const router = new Router({
   prefix: "/api"
@@ -11,21 +12,19 @@ router.post('/register', User.register)
 
 router.post('/login', User.login)
 
-router.post("/tag/create", Tag.create);
+router.post("/tag/create", Auth, Tag.create);
 
 router.get("/tag/listAll", Tag.listAll);
 
 router.get("/tag/list", Tag.list);
 
-router.post("/tag/destroy", Tag.destroy);
+router.post("/tag/destroy", Auth, Tag.destroy);
 
-router.post("/article/list", Article.list);
+router.post("/article/create", Auth, Article.create);
 
-router.post("/article/create", Article.create);
+router.post("/article/update", Auth, Article.update);
 
-router.post("/article/update", Article.update);
-
-router.post("/article/destroy", Article.destroy);
+router.post("/article/destroy", Auth, Article.destroy);
 
 router.get("/article/list", Article.list);
 

@@ -2,7 +2,8 @@ const {
   API_SUCCESS,
   API_FAILED,
   API_NODATA,
-  API_PARAMS_ERROR
+  API_PARAMS_ERROR,
+  API_NOT_PERMISSION
 }  = require('../utils/api_enums')
 
 const defaultErrorMsg = 'something went wrong!'
@@ -39,9 +40,18 @@ function responseNoData(msg = 'data not found') {
   }
 }
 
+function responsePermissionError(msg = 'login needed') {
+  return {
+    code: API_NOT_PERMISSION,
+    data: null,
+    msg
+  }
+}
+
 module.exports = {
   responseError,
   responseSuccess,
   responseParamsError,
-  responseNoData
+  responseNoData,
+  responsePermissionError
 }

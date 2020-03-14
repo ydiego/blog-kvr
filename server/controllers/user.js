@@ -30,6 +30,8 @@ const login = async ctx => {
   const where = { email };
   const user = await User.findOne({ where });
 
+  if (!user) return ctx.body = responseError(null, 'email does not exist')
+
   if (bcryptjs.compareSync(pwd, user.pwd)) {
     const token = createToken({ email, pwd });
     User.update({ token }, { where });
