@@ -1,10 +1,19 @@
 {
   "name": "blog_koa2_vue_react",
   "version": "1.0.0",
-  "description": "blog,koa2,vue admin, react front",
-  "main": "app.js",
+  "description": "a blog for koa2 + vue + react",
+  "private": true,
   "scripts": {
     "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ydiego/blog-kvr"
+  },
+  "author": {
+    "name": "ydiego",
+    "url": "https://github.com/ydiego",
+    "email": "diegofun@qq.com"
   },
   "license": "MIT",
   "dependencies": {
