@@ -5,6 +5,7 @@ const Koa = require("koa"),
   static = require("koa-static"),
   cors = require("@koa/cors"),
   template = require('koa-art-template'),
+  koaBody = require('koa-body'),
   session = require("koa-session");
 
 const app = new Koa();
@@ -37,6 +38,14 @@ app.use(static(__dirname + "/admin/dist"));
 
 app.use(cors());
 app.use(bodyParser());
+app.use(koaBody({
+  multipart: true,
+  encoding:'gzip',
+  formidable: {
+    keepExtensions: true, 
+    maxFileSize: 2 * 1024 * 1024 // 2M
+  }
+}))
 
 initRouter(app);
 

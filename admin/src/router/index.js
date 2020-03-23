@@ -4,7 +4,8 @@ const Home = () => import(/* webpackChunkName: "group-home" */"../views/Home.vue
 const User = () => import(/* webpackChunkName: "group-user" */"../views/User.vue");
 const Article = () => import(/* webpackChunkName: "group-article" */"../views/article/Index.vue");
 const CreateOrUpdate = () => import(/* webpackChunkName: "group-article" */"../views/article/CreateOrUpdate.vue");
-const Tags = () => import(/* webpackChunkName: "group-tags" */"../views//tags/Index");
+const Tags = () => import(/* webpackChunkName: "group-tags" */"../views/tags/Index");
+const Upload = () => import(/* webpackChunkName: "group-upload" */"../views/upload/Index.vue");
 
 Vue.use(VueRouter);
 
@@ -29,6 +30,10 @@ const routes = [
       {
         path: "tags",
         component: Tags
+      },
+      {
+        path: "upload",
+        component: Upload
       }
     ]
   }

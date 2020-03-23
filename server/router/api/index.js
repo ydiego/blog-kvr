@@ -3,6 +3,7 @@ const Tag = require("../../controllers/tag");
 const User = require("../../controllers/user");
 const Article = require("../../controllers/article");
 const Auth = require('../../middleware/auth')
+const Upload = require('./upload')
 
 const router = new Router({
   prefix: "/api"
@@ -13,6 +14,10 @@ router.post('/register', User.register)
 router.post('/login', User.login)
 
 router.post('/logout', User.logout)
+
+router.post('/uploadfile', Upload.uploadfile)
+
+router.post('/uploadfiles', Upload.uploadfiles)
 
 router.post("/tag/create", Auth, Tag.create);
 

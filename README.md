@@ -41,5 +41,5 @@ cd app & yarn start | yarn build
 - [ ] old blog article migrate
 - [ ] error catch
 - [ ] script shell
-- [ ] file upload
+- [x] file upload
 - [ ] create table visual ?

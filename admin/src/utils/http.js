@@ -29,18 +29,20 @@ http.interceptors.response.use(
 );
 
 export default {
-  post(url, data) {
+  post(url, data, config) {
     return http({
       method: "post",
       url,
-      data
+      data,
+      ...config
     });
   },
-  get(url, params) {
+  get(url, params, config) {
     return http({
       method: "get",
       url,
-      params
+      params,
+      ...config
     });
   }
 };
