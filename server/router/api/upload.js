@@ -34,11 +34,6 @@ const uploadfile = async ctx => {
   }
 }
 
-const uploadfiles = async ctx => {
-  
-}
-
 module.exports = {
-  uploadfile,
-  uploadfiles
+  uploadfile
 }

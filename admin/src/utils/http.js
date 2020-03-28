@@ -11,7 +11,8 @@ const http = axios.create({
 });
 
 http.defaults.headers.common = {
-  "Content-Type": "application/json; charset=UTF-8"
+  "Content-Type": "application/json; charset=UTF-8",
+  token: localStorage.getItem('token')
 };
 
 http.interceptors.response.use(

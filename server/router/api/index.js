@@ -17,8 +17,6 @@ router.post('/logout', User.logout)
 
 router.post('/uploadfile', Upload.uploadfile)
 
-router.post('/uploadfiles', Upload.uploadfiles)
-
 router.post("/tag/create", Auth, Tag.create);
 
 router.get("/tag/listAll", Tag.listAll);

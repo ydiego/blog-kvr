@@ -1,7 +1,6 @@
 const Koa = require("koa"),
   path = require("path"),
   initRouter = require("./server/router"),
-  bodyParser = require("koa-bodyparser"),
   static = require("koa-static"),
   cors = require("@koa/cors"),
   template = require('koa-art-template'),
@@ -10,6 +9,14 @@ const Koa = require("koa"),
 
 const app = new Koa();
 
+app.use(koaBody({
+  multipart: true,
+  // encoding:'gzip',
+  formidable: {
+    keepExtensions: true, 
+    maxFileSize: 2 * 1024 * 1024 // 2M
+  }
+}))
 const SESSION_CONFIG = {
   key: "koa:blog_session" /** (string) cookie key (default is koa:sess) */,
   /** (number || 'session') maxAge in ms (default is 1 days) */
@@ -37,15 +44,6 @@ app.use(static(__dirname + "/app/build"));
 app.use(static(__dirname + "/admin/dist"));
 
 app.use(cors());
-app.use(bodyParser());
-app.use(koaBody({
-  multipart: true,
-  encoding:'gzip',
-  formidable: {
-    keepExtensions: true, 
-    maxFileSize: 2 * 1024 * 1024 // 2M
-  }
-}))
 
 initRouter(app);
 

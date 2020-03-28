@@ -25,7 +25,6 @@
     "koa": "^2.11.0",
     "koa-art-template": "^1.1.1",
     "koa-body": "^4.1.1",
-    "koa-bodyparser": "^4.2.1",
     "koa-json": "^2.0.2",
     "koa-router": "^8.0.8",
     "koa-session": "^5.13.1",
