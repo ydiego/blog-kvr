@@ -1,5 +1,8 @@
 <template>
-  <a-form :label-col="formItemLayout.labelCol" :wrapper-col="formItemLayout.wrapperCol">
+  <a-form
+    :label-col="formItemLayout.labelCol"
+    :wrapper-col="formItemLayout.wrapperCol"
+  >
     <a-form-item label="title">
       <a-input v-model="formData.title" placeholder="Please input title" />
     </a-form-item>
@@ -12,7 +15,12 @@
         @change="handleSelectChange"
         style="width: 100%"
       >
-        <a-select-option v-for="item in filteredOptions" :key="item" :value="item">{{ item }}</a-select-option>
+        <a-select-option
+          v-for="item in filteredOptions"
+          :key="item"
+          :value="item"
+          >{{ item }}</a-select-option
+        >
       </a-select>
     </a-form-item>
     <a-form-item label="summary">
@@ -27,11 +35,9 @@
       />
     </a-form-item>
     <a-form-item :wrapper-col="{ span: 8, offset: 2 }">
-      <a-button
-        type="primary"
-        html-type="submit"
-        @click="handleSubmit"
-      >{{ type == "create" ? "Submit" : "Update" }}</a-button>
+      <a-button type="primary" html-type="submit" @click="handleSubmit">{{
+        type == "create" ? "Submit" : "Update"
+      }}</a-button>
     </a-form-item>
   </a-form>
 </template>

@@ -1,15 +1,15 @@
 const jwt = require("jsonwebtoken");
 const auth = () => {
-  const token = localStorage.getItem('token')
-  let verify = true
+  const token = localStorage.getItem("token");
+  let verify = true;
   if (!token) {
-    verify =  false
+    verify = false;
   } else {
-    jwt.verify(token, 'kvr-blog', (err) => {
-      verify = !err
-    })
+    jwt.verify(token, "kvr-blog", err => {
+      verify = !err;
+    });
   }
-  return verify
-}
+  return verify;
+};
 
-export default auth
+export default auth;

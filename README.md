@@ -36,6 +36,7 @@ cd app & yarn start | yarn build
 - [ ] article timeline
 - [ ] admin user
 - [x] admin login
+- [x] admin register
 - [x] user api login registe
 - [x] api auth
 - [x] web article detail

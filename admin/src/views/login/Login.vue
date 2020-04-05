@@ -5,11 +5,12 @@
         <a-input
           v-decorator="[
             'email',
-            { rules: [
+            {
+              rules: [
                 { required: true, message: 'Please input your email!' },
-                { validator: emailValidate}
-              ] 
-            },
+                { validator: emailValidate }
+              ]
+            }
           ]"
           placeholder="email"
         >
@@ -20,7 +21,11 @@
         <a-input
           v-decorator="[
             'pwd',
-            { rules: [{ required: true, message: 'Please input your Password!' }] },
+            {
+              rules: [
+                { required: true, message: 'Please input your Password!' }
+              ]
+            }
           ]"
           type="password"
           placeholder="Password"
@@ -29,51 +34,53 @@
         </a-input>
       </a-form-item>
       <a-form-item>
-        <a-button 
-          block
-          type="primary" 
-          html-type="submit"
-        >
-          Login
-        </a-button>
+        <a-button block type="primary" html-type="submit">Login</a-button>
+      </a-form-item>
+      <a-form-item style="text-align: right;">
+        <router-link to="/adminregister">
+          <a-button>Register</a-button>
+        </router-link>
       </a-form-item>
     </a-form>
   </div>
 </template>
 <script>
 export default {
-  name: 'login',
+  name: "login",
   data() {
     return {
-      form: this.$form.createForm(this, { name: 'login' }),
-    }
+      form: this.$form.createForm(this, { name: "login" })
+    };
   },
   methods: {
     emailValidate(rule, value, callback) {
-      const emailReg = /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z0-9]{2,6}$/
+      const emailReg = /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z0-9]{2,6}$/;
       if (!emailReg.test(value)) {
-        callback('invalid email address')
+        callback("invalid email address");
       }
-      callback()
+      callback();
     },
     handleSubmit(e) {
       e.preventDefault();
-      const _ = this
+      const _ = this;
       this.form.validateFields((err, values) => {
         if (!err) {
-          this.$http.post('/api/login', values).then(res => {
-            const { redirect } = _.$route.query
-            const {token} = res.data
-            localStorage.setItem('token', token)
-            _.$router.push({path: redirect})
-          }).catch(err=> {
-            console.log(err)
-          })
+          this.$http
+            .post("/api/login", values)
+            .then(res => {
+              const { redirect } = _.$route.query;
+              const { token } = res.data;
+              localStorage.setItem("token", token);
+              _.$router.push({ path: redirect });
+            })
+            .catch(err => {
+              console.log(err);
+            });
         }
       });
     }
   }
-}
+};
 </script>
 
 <style scoped>

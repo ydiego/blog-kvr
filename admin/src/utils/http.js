@@ -1,9 +1,7 @@
 import axios from "axios";
 
 const baseUrl =
-  process.env.NODE_ENV === "development"
-    ? "http://localhost:4000/"
-    : "/";
+  process.env.NODE_ENV === "development" ? "http://localhost:4000/" : "/";
 
 const http = axios.create({
   baseURL: baseUrl,
@@ -12,7 +10,7 @@ const http = axios.create({
 
 http.defaults.headers.common = {
   "Content-Type": "application/json; charset=UTF-8",
-  token: localStorage.getItem('token')
+  token: localStorage.getItem("token")
 };
 
 http.interceptors.response.use(

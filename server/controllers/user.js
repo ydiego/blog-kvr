@@ -9,15 +9,29 @@ const {
 
 const register = async ctx => {
   const { email, pwd, name } = ctx.request.body;
-
+  const where = { email }
+  if (!email) {
+    return ctx.body = responseError(null, "invalid email")
+  }
+  if (!pwd) {
+    return ctx.body = responseError(null, "invalid password")
+  }
+  if (!name) {
+    return ctx.body = responseError(null, "invalid nickname")
+  }
   await User.findOrCreate({
-    where: { email },
+    where,
     defaults: { email, pwd, name }
   })
-    .then(([user, created]) => {
+    .then( async ([user, created]) => {
+      console.log(user, created)
       if (!created) {
         ctx.body = responseError(null, "The email is registed");
       } else {
+        const token = createToken({ email, pwd });
+        await User.update({ token }, { where });
+        user.setDataValue("token", token);
+        user.setDataValue("pwd", null);
         ctx.body = responseSuccess(user, "success!");
       }
     })

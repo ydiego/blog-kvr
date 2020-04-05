@@ -1,7 +1,13 @@
 <template>
   <div>
-      <input type="file" @change="getFile($event)" name="file" multiple id="file" />
-      <button @click="upload">上传</button>
+    <input
+      type="file"
+      @change="getFile($event)"
+      name="file"
+      multiple
+      id="file"
+    />
+    <button @click="upload">上传</button>
   </div>
 </template>
 <script>
@@ -14,7 +20,7 @@ export default {
   methods: {
     getFile(event) {
       var file = event.target.files;
-      this.files = []
+      this.files = [];
       for (var i = 0; i < file.length; i++) {
         //    上传类型判断
         var imgName = file[i].name;
@@ -45,11 +51,9 @@ export default {
           "Content-Type": "multipart/form-data"
         }
       };
-      this.$http
-        .post('/api/uploadfile', formData, config)
-        .then(res => {
-          console.log(res)
-        });
+      this.$http.post("/api/uploadfile", formData, config).then(res => {
+        console.log(res);
+      });
     }
   }
 };

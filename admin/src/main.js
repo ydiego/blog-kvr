@@ -3,7 +3,7 @@ import App from "./App.vue";
 import router from "./router";
 import registerComponents from "./utils/registerComp";
 import http from "./utils/http";
-import store from './store'
+import store from "./store";
 
 registerComponents(Vue);
 
