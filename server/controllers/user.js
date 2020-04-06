@@ -8,7 +8,7 @@ const {
 } = require("../utils/response");
 
 const register = async ctx => {
-  const { email, pwd, name } = ctx.request.body;
+  const { email, pwd, name, withLogin } = ctx.request.body;
   const where = { email }
   if (!email) {
     return ctx.body = responseError(null, "invalid email")
@@ -28,10 +28,12 @@ const register = async ctx => {
       if (!created) {
         ctx.body = responseError(null, "The email is already registed");
       } else {
-        // const token = createToken({ email, pwd });
-        // await User.update({ token }, { where });
-        // user.setDataValue("token", token);
-        // user.setDataValue("pwd", null);
+        if (withLogin) {
+          const token = createToken({ email, pwd });
+          await User.update({ token }, { where });
+          user.setDataValue("token", token);
+          user.setDataValue("pwd", null);
+        }
         ctx.body = responseSuccess(user, "success!");
       }
     })

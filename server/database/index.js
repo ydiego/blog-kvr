@@ -12,5 +12,5 @@ sequelize
   .catch(err => {
     console.log("connect error:", err);
   });
-sequelize.sync();
+sequelize.sync({ alter: true });
 module.exports = sequelize;

@@ -36,6 +36,10 @@ const User = sequelize.define('user', {
     get() {
       return moment(this.getDataValue('createdAt')).format('YYYY-MM-DD')
     }
+  },
+  auth: {
+    type: Sequelize.INTEGER(1),
+    defaultValue: 0 // admin auth login 1: admin 0: normal
   }
 },
 {})

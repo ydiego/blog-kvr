@@ -127,7 +127,7 @@ export default {
       this.form.validateFieldsAndScroll((err, values) => {
         if (!err) {
           this.$http
-            .post("/api/register", values)
+            .post("/api/register", { ...values, withLogin: true })
             .then(res => {
               console.log(res);
 

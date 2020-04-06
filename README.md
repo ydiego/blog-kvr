@@ -37,6 +37,7 @@ cd app & yarn start | yarn build
 - [ ] admin user
 - [x] admin login
 - [x] admin register
+- [ ] admin user pwd manger
 - [x] user api login registe
 - [x] api auth
 - [x] web article detail
