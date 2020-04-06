@@ -36,11 +36,11 @@
       <a-form-item>
         <a-button block type="primary" html-type="submit">Login</a-button>
       </a-form-item>
-      <a-form-item style="text-align: right;">
+      <!-- <a-form-item style="text-align: right;">
         <router-link to="/adminregister">
           <a-button>Register</a-button>
         </router-link>
-      </a-form-item>
+      </a-form-item> -->
     </a-form>
   </div>
 </template>

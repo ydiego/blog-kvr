@@ -26,12 +26,12 @@ const register = async ctx => {
     .then( async ([user, created]) => {
       console.log(user, created)
       if (!created) {
-        ctx.body = responseError(null, "The email is registed");
+        ctx.body = responseError(null, "The email is already registed");
       } else {
-        const token = createToken({ email, pwd });
-        await User.update({ token }, { where });
-        user.setDataValue("token", token);
-        user.setDataValue("pwd", null);
+        // const token = createToken({ email, pwd });
+        // await User.update({ token }, { where });
+        // user.setDataValue("token", token);
+        // user.setDataValue("pwd", null);
         ctx.body = responseSuccess(user, "success!");
       }
     })
