@@ -1,3 +1,4 @@
+import { VueConstructor } from 'vue'
 import {
   Button,
   Layout,
@@ -13,7 +14,7 @@ import {
   Select
 } from "ant-design-vue";
 
-export default function registerComponents(Vue) {
+export default function registerComponents(Vue: VueConstructor): void {
   Vue.component(Button.name, Button);
   Vue.component(Layout.name, Layout);
   Vue.component(Layout.Content.name, Layout.Content);
