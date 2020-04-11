@@ -29,11 +29,17 @@
         </span>
         <a-input
           v-decorator="[
-          'name',
-          {
-            rules: [{ required: true, message: 'Please input your nickname!', whitespace: true }],
-          },
-        ]"
+            'name',
+            {
+              rules: [
+                {
+                  required: true,
+                  message: 'Please input your nickname!',
+                  whitespace: true
+                }
+              ]
+            }
+          ]"
         />
       </a-form-item>
       <a-form-item v-bind="formItemLayout" label="Password" has-feedback>
@@ -55,7 +61,11 @@
           type="password"
         />
       </a-form-item>
-      <a-form-item v-bind="formItemLayout" label="Confirm Password" has-feedback>
+      <a-form-item
+        v-bind="formItemLayout"
+        label="Confirm Password"
+        has-feedback
+      >
         <a-input
           v-decorator="[
             'confirm',

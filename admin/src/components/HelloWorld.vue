@@ -12,7 +12,7 @@
     <ul>
       <li>
         <a
-          href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel"
+          href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-typescript"
           target="_blank"
           rel="noopener"
           >babel</a

@@ -14,7 +14,7 @@ const CreateOrUpdate = () =>
     /* webpackChunkName: "group-article" */ "../views/article/CreateOrUpdate.vue"
   );
 const Tags = () =>
-  import(/* webpackChunkName: "group-tags" */ "../views/tags/Index");
+  import(/* webpackChunkName: "group-tags" */ "../views/tags/Index.vue");
 const Upload = () =>
   import(/* webpackChunkName: "group-upload" */ "../views/upload/Index.vue");
 const Login = () =>
@@ -60,7 +60,7 @@ const routes = [
     path: "/adminlogin",
     name: "login",
     component: Login
-  },
+  }
   // {
   //   path: "/adminRegister",
   //   name: "register",
@@ -75,7 +75,8 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  if (["login", "register"].includes(to.name)) {
+  const name:string = to.name ||''
+  if (["login", "register"].includes(name)) {
     next();
     return;
   }
