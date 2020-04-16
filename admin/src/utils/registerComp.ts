@@ -11,7 +11,8 @@ import {
   Table,
   Modal,
   message,
-  Select
+  Select,
+  Tooltip
 } from "ant-design-vue";
 
 export default function registerComponents(Vue: VueConstructor): void {
@@ -32,6 +33,7 @@ export default function registerComponents(Vue: VueConstructor): void {
   Vue.component(Select.name, Select);
   Vue.component(Select.Option.name, Select.Option);
   Vue.component(Form.Item.name, Form.Item);
+  Vue.component(Tooltip.name, Tooltip);
   Vue.prototype.$confirm = Modal.confirm;
   Vue.prototype.$message = message;
 }

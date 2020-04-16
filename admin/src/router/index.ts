@@ -21,10 +21,10 @@ const Login = () =>
   import(
     /* webpackChunkName: "group-login-register" */ "../views/login/Login.vue"
   );
-// const Register = () =>
-//   import(
-//     /* webpackChunkName: "group-login-register" */ "../views/register/Register.vue"
-//   );
+const Register = () =>
+  import(
+    /* webpackChunkName: "group-login-register" */ "../views/register/Register.vue"
+  );
 
 Vue.use(VueRouter);
 
@@ -60,12 +60,12 @@ const routes = [
     path: "/adminlogin",
     name: "login",
     component: Login
+  },
+  {
+    path: "/adminRegister",
+    name: "register",
+    component: Register
   }
-  // {
-  //   path: "/adminRegister",
-  //   name: "register",
-  //   component: Register
-  // }
 ];
 
 const router = new VueRouter({

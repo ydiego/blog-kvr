@@ -38,7 +38,7 @@
       </a-form-item>
       <!-- <a-form-item style="text-align: right;">
         <router-link to="/adminregister">
-          <a-button>Register</a-button>
+          Register
         </router-link>
       </a-form-item> -->
     </a-form>
