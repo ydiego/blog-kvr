@@ -45,3 +45,9 @@ export default {
     });
   }
 };
+
+declare module 'vue/types/vue' {
+  interface Vue {
+    $http: any
+  }
+}
