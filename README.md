@@ -46,3 +46,4 @@ cd app & yarn start | yarn build
 - [ ] script shell
 - [x] file upload
 - [ ] create table visual ?
+- [ ] use graphQL
