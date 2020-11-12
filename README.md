@@ -47,3 +47,4 @@ cd app & yarn start | yarn build
 - [x] file upload
 - [ ] create table visual ?
 - [ ] use graphQL
+- [ ] use recoil
