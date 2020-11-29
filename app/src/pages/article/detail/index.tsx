@@ -1,10 +1,10 @@
 import React, {Component} from 'react'
 import ArticleItem from "../item";
-import {getArticleDetail} from '../../../api/api'
+import {getArticleDetail} from 'src/api/api'
 import {
   Article, 
   ArticleDetailResponse
-} from '../../../types'
+} from 'src/types'
 import '../styles/articleWrapper.css'
 
 interface ArticleDetailInterface {

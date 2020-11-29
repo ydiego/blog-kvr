@@ -12,11 +12,11 @@ type ArticleItemType = {
   isDetail?: boolean
 }
 
-type ArticleNav = {
+type TArticleNav = {
   prev: any
   next: any
 }
-const ArticleNav:React.FC<ArticleNav> = ({prev, next}) => {
+const ArticleNav:React.FC<TArticleNav> = ({prev, next}) => {
   if (!prev && !next) return null
   return (
     <div className="article-nav">
