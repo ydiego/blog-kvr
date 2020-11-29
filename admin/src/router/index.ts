@@ -30,6 +30,10 @@ Vue.use(VueRouter);
 
 const routes = [
   {
+    path: '/',
+    redirect: '/admin'
+  },
+  {
     path: "/admin",
     name: "Home",
     component: Home,
