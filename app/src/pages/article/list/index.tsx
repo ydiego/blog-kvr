@@ -4,7 +4,7 @@ import '../styles/articleWrapper.css'
 import {
   Article,
   ArticleListResponse
-} from '../../../types'
+} from 'src/types'
 
 interface Props { }
 
