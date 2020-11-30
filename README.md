@@ -45,6 +45,5 @@ cd app & yarn start | yarn build
 - [ ] error catch
 - [ ] script shell
 - [x] file upload
-- [ ] create table visual ?
 - [x] use graphQL
 - [ ] use recoil
