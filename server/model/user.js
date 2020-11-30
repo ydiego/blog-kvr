@@ -15,7 +15,9 @@ const User = sequelize.define('user', {
   },
   email: {
     type: Sequelize.STRING(128),
-    unique: true,
+    unique: {
+      msg: '重复的邮箱'
+    },
     allowNull: false
   },
   pwd: {
