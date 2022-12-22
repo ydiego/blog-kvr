@@ -11,7 +11,7 @@
     "ant-design-vue": "^1.4.12",
     "axios": "^0.21.2",
     "core-js": "^3.6.4",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "mavon-editor": "^2.8.2",
     "vue": "^2.6.11",
     "vue-class-component": "^7.2.3",
